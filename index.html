@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DecoFlow — 所見即所得的 AR × AI 室內設計平台</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">◳</span>
+      <span class="logo-text">DecoFlow</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">核心功能</a></li>
+      <li><a href="#demo">互動體驗</a></li>
+      <li><a href="#how">運作方式</a></li>
+      <li><a href="#audience">適用對象</a></li>
+      <li><a href="#pricing">方案</a></li>
+      <li><a href="#about">關於我們</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">免費試用</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span> Unity AR × 生成式 AI 室內設計平台
+    </div>
+    <h1 class="hero-title">
+      讓<span class="gradient-text">空間想像</span><br/>
+      不再是想像
+    </h1>
+    <p class="hero-sub">
+      DecoFlow 透過 AR 擴增實境與 AI 生成技術，將傳統長達一週的 3D 渲染流程縮短為「即時生成」。<br/>
+      消除設計師與業主間的溝通落差，實現「所見即所得」的設計體驗。
+    </p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn btn-primary">立即下載 App <span>→</span></a>
+      <a href="#ar-feature" class="btn btn-ghost">▶ 觀看示範影片</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>1%</strong><span>模型誤差值</span></div>
+      <div><strong>4 hrs</strong><span>建模工時</span></div>
+      <div><strong>30%</strong><span>退貨率降低</span></div>
+      <div><strong>3.3:1</strong><span>LTV/CAC 比</span></div>
+    </div>
+  </div>
+
+  <!-- Floating decorative cards -->
+  <div class="float-card card-1">
+    <div class="fc-icon">📐</div>
+    <div>
+      <p class="fc-title">AR 即時量測</p>
+      <p class="fc-sub">1:1 沉浸式預覽</p>
+    </div>
+  </div>
+  <div class="float-card card-2">
+    <div class="fc-icon">🪑</div>
+    <div>
+      <p class="fc-title">家具自動佈置</p>
+      <p class="fc-sub">AI 三秒生成方案</p>
+    </div>
+  </div>
+  <div class="float-card card-3">
+    <div class="fc-icon">🎨</div>
+    <div>
+      <p class="fc-title">語音切換風格</p>
+      <p class="fc-sub">北歐風 → 工業風</p>
+    </div>
+  </div>
+</header>
+
+<!-- Pain Points -->
+<section class="pain" id="pain">
+  <div class="container">
+    <p class="eyebrow">傳統室內設計的三大痛點</p>
+    <h2 class="section-title">為什麼裝潢總是<span class="gradient-text">不如預期</span>？</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <h3>溝通落差大</h3>
+        <p>業主看不懂平面圖、想像不到完工樣貌。設計師需多次來回修改，導致工程變更與合約糾紛。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <h3>設計費用高</h3>
+        <p>專業 3D 渲染圖製作費時又昂貴。獨立工作室往往沒有預算雇用全職繪圖員，效率受限。</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <h3>家具退貨率高</h3>
+        <p>網購家具後發現尺寸不符、色系不搭，造成資源浪費與物流碳排放，增加環境負擔。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Features -->
+<section class="features" id="features">
+  <div class="container">
+    <p class="eyebrow">核心功能</p>
+    <h2 class="section-title">一個 App，<span class="gradient-text">重新定義</span>室內設計流程</h2>
+
+    <div class="feature-grid">
+      <div class="feature-card feature-large" id="ar-feature">
+        <div class="feature-tag">AR 擴增實境</div>
+        <h3>掃描空間 → AI 試擺 → 呈現實體</h3>
+        <p><strong>① 掃描空間</strong>：手機鏡頭環繞一圈，即時完成 3D 空間建模。<strong>② AI 試擺</strong>：家具以青色全息預覽自動定位、隨時調整。<strong>③ 呈現實體</strong>：一鍵生成 1:1 擬真完工樣貌——如下方動畫，從空房到夢想中的家全程即時呈現。</p>
+        <div class="feature-visual visual-ar">
+          <canvas id="arCanvas"></canvas>
+          <div class="ar-status" id="arStatus">◉ AR 掃描中…</div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-tag">AI 生成</div>
+        <h3>AI 全屋自動佈置</h3>
+        <p>上傳戶型圖，系統自動生成 3D 互動方案，風格選項一次呈現。</p>
+        <div class="mini-icons">
+          <span>🏠</span><span>→</span><span>✨</span><span>→</span><span>🎯</span>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-tag">智慧素材庫</div>
+        <h3>百件以上精準 3D 模型</h3>
+        <p>AI 生成 + 人工精修流程，確保模型誤差小於 1%，符合 B2B 施工圖等級。</p>
+        <div class="model-row">
+          <div class="model-chip">沙發 · 18 款</div>
+          <div class="model-chip">桌椅 · 32 款</div>
+          <div class="model-chip">燈具 · 24 款</div>
+          <div class="model-chip">建材 · 50+</div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-tag">快速模板</div>
+        <h3>一鍵套用設計風格</h3>
+        <p>北歐、日式無印、工業、現代極簡 — 內建多種精選模板，降低構思時間。</p>
+        <div class="style-row">
+          <div class="style-pill" style="background:linear-gradient(135deg,#e8d5b7,#c9a87c)">北歐</div>
+          <div class="style-pill" style="background:linear-gradient(135deg,#f5f1ea,#d4cfc4)">無印</div>
+          <div class="style-pill" style="background:linear-gradient(135deg,#5a5a5a,#2c2c2c);color:#fff">工業</div>
+          <div class="style-pill" style="background:linear-gradient(135deg,#ffffff,#e8e8e8)">極簡</div>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-tag">語音控制</div>
+        <h3>對著手機說話就能改設計</h3>
+        <p>「把客廳牆壁改成北歐風淺灰色」— 自然語言即時調整設計方案。</p>
+        <div class="voice-demo">
+          <div class="voice-wave"></div>
+          <p class="voice-text">"換成日式風格的木質地板"</p>
+        </div>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-tag">家具導購</div>
+        <h3>一鍵連結品牌實品</h3>
+        <p>串接 IKEA、HOLA、H&D 等品牌，AR 試擺滿意後直接購買。</p>
+        <div class="brand-row">
+          <div class="brand-chip">IKEA</div>
+          <div class="brand-chip">HOLA</div>
+          <div class="brand-chip">H&D</div>
+          <div class="brand-chip">hoi!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive 3D Demo -->
+<section class="demo" id="demo">
+  <div class="container">
+    <p class="eyebrow">互動體驗 · LIVE DEMO</p>
+    <h2 class="section-title">直接在<span class="gradient-text">瀏覽器中</span>體驗 DecoFlow</h2>
+    <p class="demo-intro">這是 DecoFlow 技術的網頁版簡化展示 — 拖曳旋轉視角、一鍵切換風格、自訂牆色、開關家具，甚至用語音說話來改變設計。</p>
+
+    <div class="demo-wrap">
+      <div class="demo-stage">
+        <canvas id="demoCanvas"></canvas>
+        <div class="demo-loader" id="demoLoader">
+          <div class="spinner"></div>
+          <p>載入 3D 場景中...</p>
+        </div>
+        <div class="demo-hint">✋ 拖曳移動　🔄 雙擊旋轉　🛒 單擊家具看商品</div>
+        <div class="demo-style-tag" id="demoStyleTag">北歐風</div>
+
+        <!-- 購物車摘要（可點擊展開）-->
+        <div class="cart-chip" id="cartChip" title="點擊展開購物車">
+          <span class="cart-ico">🛒</span>
+          <span id="cartCount">0</span> 件
+          <span class="cart-total" id="cartTotal">NT$0</span>
+        </div>
+
+        <!-- 購物車清單 -->
+        <div class="cart-list" id="cartList">
+          <div class="cart-list-head">
+            <span>🛒 購物車</span>
+            <button class="cart-list-close" id="cartListClose">×</button>
+          </div>
+          <div class="cart-items" id="cartItems"></div>
+          <div class="cart-list-foot">
+            <span>合計</span>
+            <span id="cartListTotal">NT$0</span>
+          </div>
+          <button class="cart-checkout" id="cartCheckout">前往結帳</button>
+        </div>
+
+        <!-- 商品卡（點擊家具時跳出）-->
+        <div class="product-card" id="productCard">
+          <button class="product-close" id="productClose">×</button>
+          <div class="product-brand" id="productBrand">IKEA</div>
+          <div class="product-name" id="productName">北歐風 布質三人沙發</div>
+          <div class="product-price" id="productPrice">NT$18,900</div>
+          <div class="product-models-wrap" id="productModelsWrap">
+            <div class="product-models-label">其他款式</div>
+            <div class="product-models" id="productModels"></div>
+          </div>
+          <div class="product-actions">
+            <button class="product-buy" id="productBuy">🛒 加入購物車</button>
+          </div>
+          <div class="product-note">透過 DecoFlow 導購，平台收取分潤</div>
+        </div>
+      </div>
+
+      <div class="demo-panel">
+        <div class="panel-section">
+          <h4><span class="panel-icon">🎨</span>一鍵風格切換</h4>
+          <div class="style-buttons">
+            <button class="style-btn active" data-style="nordic">北歐風</button>
+            <button class="style-btn" data-style="japanese">日式無印</button>
+            <button class="style-btn" data-style="industrial">工業風</button>
+            <button class="style-btn" data-style="minimal">現代極簡</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h4><span class="panel-icon">📐</span>格局範本</h4>
+          <div class="layout-buttons">
+            <button class="layout-btn active" data-layout="classic">經典靠牆</button>
+            <button class="layout-btn" data-layout="diagonal">對角配置</button>
+            <button class="layout-btn" data-layout="center_open">中央開放</button>
+            <button class="layout-btn" data-layout="reading_nook">閱讀角落</button>
+            <button class="layout-btn" data-layout="face_window">面窗式</button>
+            <button class="layout-btn" data-layout="minimal_void">極簡留白</button>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h4><span class="panel-icon">🖌️</span>自訂牆面顏色</h4>
+          <div class="color-row">
+            <button class="color-swatch" style="background:#f4f1ec" data-color="#f4f1ec" title="米白"></button>
+            <button class="color-swatch" style="background:#e8d5b7" data-color="#e8d5b7" title="奶茶"></button>
+            <button class="color-swatch" style="background:#a8c8b8" data-color="#a8c8b8" title="鼠尾草綠"></button>
+            <button class="color-swatch" style="background:#7a8aa0" data-color="#7a8aa0" title="霧霾藍"></button>
+            <button class="color-swatch" style="background:#d4a5a5" data-color="#d4a5a5" title="蜜桃粉"></button>
+            <button class="color-swatch" style="background:#3a3a3a" data-color="#3a3a3a" title="深炭灰"></button>
+            <input type="color" id="customColor" value="#f4f1ec" class="color-picker" title="自訂顏色" />
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h4><span class="panel-icon">🪑</span>家具配置</h4>
+          <div class="furniture-toggles">
+            <label><input type="checkbox" checked data-furn="sofa" /><span>沙發</span></label>
+            <label><input type="checkbox" checked data-furn="table" /><span>茶几</span></label>
+            <label><input type="checkbox" checked data-furn="lamp" /><span>立燈</span></label>
+            <label><input type="checkbox" checked data-furn="plant" /><span>植栽</span></label>
+            <label><input type="checkbox" checked data-furn="rug" /><span>地毯</span></label>
+            <label><input type="checkbox" checked data-furn="painting" /><span>掛畫</span></label>
+            <label><input type="checkbox" checked data-furn="armchair" /><span>扶手椅</span></label>
+            <label><input type="checkbox" checked data-furn="tvStand" /><span>電視櫃</span></label>
+            <label><input type="checkbox" checked data-furn="sideTable" /><span>邊几</span></label>
+          </div>
+        </div>
+
+        <div class="panel-section">
+          <h4><span class="panel-icon">🎙️</span>AI 語音指令</h4>
+          <button class="voice-btn" id="voiceBtn">
+            <span class="mic-icon">🎤</span>
+            <span class="voice-label">點擊說話，試試「換成工業風」</span>
+          </button>
+          <p class="voice-status" id="voiceStatus">支援關鍵字：北歐 / 日式 / 工業 / 極簡</p>
+        </div>
+
+        <div class="panel-section">
+          <h4><span class="panel-icon">✨</span>AI 自動生成 / 重置</h4>
+          <div class="action-row">
+            <button class="generate-btn" id="generateBtn">
+              <span>🎲</span> 隨機生成
+            </button>
+            <button class="reset-btn" id="resetBtn">
+              <span>↺</span> 重置位置
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="demo-footnote">※ 此為網頁簡化版示範，正式 DecoFlow App 提供更高擬真度的 AR 即時渲染、500+ 商業級家具模型、及戶型圖自動生成功能。</p>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how" id="how">
+  <div class="container">
+    <p class="eyebrow">運作方式</p>
+    <h2 class="section-title">從拍照到完工，<span class="gradient-text">四步完成</span></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>掃描空間</h3>
+          <p>開啟 App，用手機鏡頭環繞房間 30 秒，自動建立 3D 模型與空間尺寸。</p>
+        </div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>AI 生成方案</h3>
+          <p>選擇喜歡的風格與預算，AI 在數秒內產出多種佈置方案。</p>
+        </div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>AR 實境檢視</h3>
+          <p>透過 AR 模式於真實空間中查看完工樣貌，自由拖曳、替換、微調。</p>
+        </div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>直購與施工</h3>
+          <p>滿意即可下單合作品牌家具，或一鍵媒合平台設計師完成工程。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Target Audience -->
+<section class="audience" id="audience">
+  <div class="container">
+    <p class="eyebrow">適用對象</p>
+    <h2 class="section-title">為<span class="gradient-text">每一種需求</span>而設計</h2>
+
+    <div class="audience-grid">
+      <div class="aud-card">
+        <div class="aud-icon">🏢</div>
+        <h3>大型設計事務所</h3>
+        <p>多人雲端協作、企業私有模型庫，將事務所的美學風格變成可重複調用的數位資產。</p>
+        <ul>
+          <li>✓ 高精度 VR 渲染</li>
+          <li>✓ 多人協作模式</li>
+          <li>✓ 雲端材質庫管理</li>
+        </ul>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-icon">✏️</div>
+        <h3>獨立設計工作室</h3>
+        <p>無需 3D 繪圖員，AI 自動生成讓你在客戶現場即時完成提案，節省數天製圖時間。</p>
+        <ul>
+          <li>✓ 快速建模</li>
+          <li>✓ 風格秒換</li>
+          <li>✓ 跨平台提案</li>
+        </ul>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-icon">🔨</div>
+        <h3>統包工程商</h3>
+        <p>把抽象的施工計畫變成具象的視覺呈現，減少誤解導致的拆除重做。</p>
+        <ul>
+          <li>✓ 現場 AR 試擺</li>
+          <li>✓ 簡易材質更換</li>
+          <li>✓ 施工前後對比</li>
+        </ul>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-icon">🛋️</div>
+        <h3>軟裝設計師</h3>
+        <p>串接品牌家具導購分潤，建立第二條收入曲線，AR 試擺解決尺寸與比例難題。</p>
+        <ul>
+          <li>✓ 導購分潤機制</li>
+          <li>✓ 完整品牌模型庫</li>
+          <li>✓ 光影擬真模擬</li>
+        </ul>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-icon">🏠</div>
+        <h3>房仲業者</h3>
+        <p>毛胚屋一秒變樣品屋，客戶當場感受空間規劃，提升成交效率。</p>
+        <ul>
+          <li>✓ 戶型即時可視化</li>
+          <li>✓ 多風格快速切換</li>
+          <li>✓ 提升看屋體驗</li>
+        </ul>
+      </div>
+
+      <div class="aud-card">
+        <div class="aud-icon">👨‍👩‍👧</div>
+        <h3>一般消費者</h3>
+        <p>害怕裝潢後悔嗎？免費試擺功能省去尺寸錯誤、色系不搭的窘境。</p>
+        <ul>
+          <li>✓ 免費 AR 試擺</li>
+          <li>✓ 直覺易用介面</li>
+          <li>✓ 一鍵購買家具</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech Stats -->
+<section class="tech">
+  <div class="container">
+    <div class="tech-grid">
+      <div class="tech-text">
+        <p class="eyebrow">技術優勢</p>
+        <h2>當設計與科技<br/><span class="gradient-text">完美交融</span></h2>
+        <p class="tech-desc">
+          DecoFlow 採用 Unity AR Foundation 開發，市面上 80% 的中階 Android 手機都能流暢運行。<br/><br/>
+          搭配 Human-in-the-loop 協作模式，AI 自動完成 70% 基礎建模，專業人員精修 30% 關鍵細節，將單一模型建置成本從 100 美金壓縮至 30 美金以下。
+        </p>
+      </div>
+      <div class="tech-cards">
+        <div class="tech-card">
+          <div class="tech-num">80%</div>
+          <p>中階 Android 手機<br/>可流暢運行</p>
+        </div>
+        <div class="tech-card highlight">
+          <div class="tech-num">70%</div>
+          <p>AI 自動完成<br/>基礎建模工作</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-num">$30</div>
+          <p>單一模型成本<br/>(原 $100)</p>
+        </div>
+        <div class="tech-card">
+          <div class="tech-num">&lt;1%</div>
+          <p>家具模型尺寸<br/>誤差值</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="eyebrow">方案介紹</p>
+    <h2 class="section-title">選擇<span class="gradient-text">最適合</span>你的方案</h2>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>免費版</h3>
+        <p class="price-sub">適合一般消費者</p>
+        <div class="price-amount"><span class="price-currency">NT$</span><span class="price-num">0</span><span class="price-period">/ 永久</span></div>
+        <ul class="price-features">
+          <li>✓ 基礎 AR 試擺功能</li>
+          <li>✓ 100+ 通用家具模型</li>
+          <li>✓ 5 個專案儲存空間</li>
+          <li>✓ 家具品牌導購連結</li>
+          <li class="muted">✗ AI 自動佈置</li>
+          <li class="muted">✗ 高解析度匯出</li>
+        </ul>
+        <a href="#cta" class="btn btn-outline">立即免費下載</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="featured-badge">最受歡迎</div>
+        <h3>專業版</h3>
+        <p class="price-sub">適合設計師 / 工作室</p>
+        <div class="price-amount"><span class="price-currency">NT$</span><span class="price-num">990</span><span class="price-period">/ 月</span></div>
+        <ul class="price-features">
+          <li>✓ 完整 AR + AI 功能</li>
+          <li>✓ 500+ 高精度商業模型</li>
+          <li>✓ 無限雲端專案儲存</li>
+          <li>✓ AI 全屋自動佈置</li>
+          <li>✓ 語音指令更換設計</li>
+          <li>✓ 4K 渲染圖匯出</li>
+        </ul>
+        <a href="#cta" class="btn btn-primary">14 天免費試用</a>
+      </div>
+
+      <div class="price-card">
+        <h3>企業版</h3>
+        <p class="price-sub">適合大型設計事務所</p>
+        <div class="price-amount"><span class="price-currency">客製</span></div>
+        <ul class="price-features">
+          <li>✓ 包含專業版所有功能</li>
+          <li>✓ 企業私有模型雲</li>
+          <li>✓ 多人協作 (10+ 席次)</li>
+          <li>✓ API 串接施工圖系統</li>
+          <li>✓ 專屬客戶成功經理</li>
+          <li>✓ 教育訓練與技術支援</li>
+        </ul>
+        <a href="#cta" class="btn btn-outline">聯繫業務</a>
+      </div>
+    </div>
+
+    <p class="edu-note">🎓 <strong>學術教育方案：</strong>大專院校建築與設計相關系所學生可享免費或優惠價，培養未來設計師的軟體使用慣性。</p>
+  </div>
+</section>
+
+<!-- About / Team -->
+<section class="about" id="about">
+  <div class="container">
+    <p class="eyebrow">關於我們</p>
+    <h2 class="section-title">用科技重新定義<span class="gradient-text">空間設計</span></h2>
+
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>願景</h3>
+        <p>成為亞洲最具影響力之一的空間設計應用軟體，讓每一次的空間改造都充滿靈感與信心。</p>
+      </div>
+      <div class="about-card">
+        <h3>使命</h3>
+        <p>對使用者提供直覺、好用且負擔得起的設計工具；協助家具品牌數位轉型，更精準觸及潛在客戶。</p>
+      </div>
+      <div class="about-card">
+        <h3>核心精神</h3>
+        <p><strong>創新</strong>：運用 AR 與 AI 最新技術。<br/><strong>務實</strong>：解決真實痛點。<br/><strong>洞察</strong>：減少想像落差。</p>
+      </div>
+    </div>
+
+    <div class="team">
+      <p class="team-title">DecoFlow 團隊</p>
+      <p class="team-sub">114 學年度 第十四屆 商管專題 · 指導老師：張廷任</p>
+      <div class="team-members">
+        <div class="member"><div class="avatar">葉</div><p>葉品辰<br/><span>組長</span></p></div>
+        <div class="member"><div class="avatar">藍</div><p>藍宇喬<br/><span>組員</span></p></div>
+        <div class="member"><div class="avatar">陳</div><p>陳宣妤<br/><span>組員</span></p></div>
+        <div class="member"><div class="avatar">許</div><p>許育榤<br/><span>組員</span></p></div>
+        <div class="member"><div class="avatar">李</div><p>李佳紋<br/><span>組員</span></p></div>
+        <div class="member"><div class="avatar">曾</div><p>曾文穎<br/><span>組員</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>準備好<span class="gradient-text">重新打造</span>你的空間了嗎？</h2>
+      <p>加入 DecoFlow，與 30,000+ 設計師、屋主一起，體驗所見即所得的設計新時代。</p>
+      <form class="cta-form" onsubmit="event.preventDefault(); alert('感謝註冊！我們將盡快聯繫您。');">
+        <input type="email" placeholder="輸入你的 Email" required />
+        <button type="submit" class="btn btn-primary">免費搶先體驗</button>
+      </form>
+      <div class="store-badges">
+        <a href="#" class="store">📱 App Store</a>
+        <a href="#" class="store">▶ Google Play</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo">
+          <span class="logo-mark">◳</span>
+          <span class="logo-text">DecoFlow</span>
+        </a>
+        <p class="footer-tag">所見即所得的 AR × AI 室內設計平台</p>
+      </div>
+      <div>
+        <h4>產品</h4>
+        <ul>
+          <li><a href="#features">核心功能</a></li>
+          <li><a href="#pricing">方案價格</a></li>
+          <li><a href="#how">運作方式</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>客戶</h4>
+        <ul>
+          <li><a href="#audience">設計師</a></li>
+          <li><a href="#audience">統包商</a></li>
+          <li><a href="#audience">一般消費者</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>聯繫</h4>
+        <ul>
+          <li><a href="mailto:hello@decoflow.com">hello@decoflow.com</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 DecoFlow 科技股份有限公司 · All rights reserved.</p>
+      <p>114 學年度 商業管理學士學位學程 · 第十四屆商管專題</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Three.js for the 3D demo -->
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="ar-scan.js"></script>
+<script src="demo.js"></script>
+
+<script>
+// 滾動時導覽列陰影
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// 進場動畫
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in-view');
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.pain-card, .feature-card, .aud-card, .price-card, .about-card, .step, .tech-card').forEach(el => {
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
