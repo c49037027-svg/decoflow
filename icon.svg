@@ -7,8 +7,7 @@
   </defs>
   <!-- 圓角背景 -->
   <rect width="512" height="512" rx="112" fill="url(#g)"/>
-  <!-- 內框（房間輪廓） -->
-  <rect x="120" y="120" width="272" height="272" rx="20" fill="none" stroke="white" stroke-width="24"/>
-  <!-- 斜線（仿 DecoFlow logo 的 ◳ 符號） -->
-  <line x1="392" y1="120" x2="120" y2="392" stroke="white" stroke-width="24" stroke-linecap="round"/>
+  <!-- D 標誌：左側直線 + 圓圈 -->
+  <line x1="180" y1="90" x2="180" y2="422" stroke="white" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="290" cy="256" r="150" fill="none" stroke="white" stroke-width="34"/>
 </svg>

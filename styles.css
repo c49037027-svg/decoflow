@@ -158,6 +158,11 @@ section {
   font-size: 20px;
   box-shadow: 0 4px 12px rgba(201,168,124,0.4);
 }
+.logo-mark svg {
+  width: 70%;
+  height: 70%;
+  display: block;
+}
 .nav-links {
   display: flex;
   gap: 32px;
