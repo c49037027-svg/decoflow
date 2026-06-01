@@ -18,25 +18,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* === 獨立互動體驗頁面：全螢幕沉浸版（iPad / 桌機通用）=== */
-  html, body { height: 100%; }
+  /* === 獨立互動體驗頁面：鎖死視窗、不可滾動（iPad Air 最佳化）=== */
+  html, body {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;                   /* 整頁鎖住，不上下滾 */
+  }
   body {
     margin: 0;
     background: var(--bg-soft);
-    overscroll-behavior: none;          /* 防止整頁下拉刷新 */
+    overscroll-behavior: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    position: fixed;                    /* iOS Safari 防止橡皮筋滾動 */
+    inset: 0;
   }
-  .demo-page { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+  .demo-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
 
-  /* 頂部標題列 */
+  /* 頂部標題列（更精簡）*/
   .demo-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 18px;
+    padding: 5px 12px;
     background: var(--ink);
     color: #fff;
     flex-shrink: 0;
@@ -44,30 +56,31 @@
   .demo-bar .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
     font-weight: 900;
-    font-size: 17px;
+    font-size: 14px;
     color: #fff;
     text-decoration: none;
     letter-spacing: -0.01em;
   }
   .demo-bar .logo-mark {
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--accent), var(--accent-deep));
     color: #fff;
-    border-radius: 9px;
-    font-size: 17px;
+    border-radius: 6px;
+    font-size: 13px;
   }
+  .demo-bar .logo-mark svg { width: 70%; height: 70%; display: block; }
   .demo-bar a.back {
     color: var(--accent);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
-    padding: 6px 12px;
+    padding: 4px 10px;
     border: 1px solid rgba(201, 168, 124, 0.4);
     border-radius: 50px;
     transition: all .2s;
@@ -75,30 +88,63 @@
   .demo-bar a.back:active,
   .demo-bar a.back:hover { background: rgba(201, 168, 124, 0.15); }
 
-  /* 內容：填滿剩餘空間 */
+  /* 內容：填滿剩餘視窗高度 */
   .demo-page-body {
     flex: 1;
-    padding: 14px;
+    min-height: 0;                      /* 允許 flex 子元素正常縮小 */
+    padding: 8px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .demo-page-body .demo-wrap {
     flex: 1;
-    gap: 14px;
+    min-height: 0;
+    gap: 8px;
     align-items: stretch;
+    height: 100%;
   }
   .demo-page-body .demo-stage {
-    height: auto;
+    height: 100%;
     min-height: 0;
     flex: 1;
   }
   .demo-page-body .demo-panel {
-    padding: 18px;
+    padding: 10px 10px;
+    gap: 8px;
     overflow-y: auto;
     max-height: 100%;
     -webkit-overflow-scrolling: touch;
   }
+
+  /* 面板內元素再瘦一輪 */
+  .demo-page-body .demo-panel .panel-section { margin-bottom: 0; }
+  .demo-page-body .demo-panel .panel-section h4 {
+    font-size: 11px;
+    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+  }
+  .demo-page-body .demo-panel .panel-icon { font-size: 12px; margin-right: 4px; }
+  .demo-page-body .demo-panel .style-buttons,
+  .demo-page-body .demo-panel .layout-buttons { gap: 5px; }
+  .demo-page-body .demo-panel .style-btn,
+  .demo-page-body .demo-panel .layout-btn { padding: 6px 4px; font-size: 11px; }
+  .demo-page-body .demo-panel .color-row { gap: 5px; }
+  .demo-page-body .demo-panel .color-swatch { width: 24px; height: 24px; border-radius: 6px; }
+  .demo-page-body .demo-panel .color-picker { width: 32px; height: 24px; }
+  .demo-page-body .demo-panel .furniture-toggles { gap: 4px; }
+  .demo-page-body .demo-panel .furniture-toggles label { padding: 5px 6px; font-size: 11px; }
+  .demo-page-body .demo-panel .voice-btn,
+  .demo-page-body .demo-panel .generate-btn,
+  .demo-page-body .demo-panel .reset-btn { padding: 8px 10px; font-size: 12px; }
+  .demo-page-body .demo-panel .voice-status { font-size: 10px; margin-top: 5px; }
+  .demo-page-body .demo-panel .action-row { gap: 6px; }
+
+  /* 舞台覆蓋元素縮小 */
+  .demo-page-body .demo-style-tag { top: 10px; left: 10px; padding: 5px 11px; font-size: 11px; }
+  .demo-page-body .cart-chip { top: 10px; right: 10px; padding: 5px 11px; font-size: 11px; }
+  .demo-page-body .demo-hint { bottom: 10px; padding: 5px 12px; font-size: 10px; }
 
   /* iPad / touch：禁止瀏覽器接管 canvas 的觸控（讓 OrbitControls 完整接手）*/
   #demoCanvas {
@@ -108,17 +154,19 @@
     height: 100%;
   }
 
-  /* 平板直立 / 手機：上下堆疊（用 900px 斷點讓 iPad 橫式維持並排）*/
-  @media (max-width: 900px) {
-    .demo-page-body .demo-wrap { grid-template-columns: 1fr; }
-    .demo-page-body .demo-stage { min-height: 420px; }
-    .demo-page-body .demo-panel { max-height: none; }
+  /* iPad Air 直向（820 寬）仍維持左右並排，避免堆疊造成滾動 */
+  /* 只有真正窄到 < 680px（手機）才堆疊 */
+  @media (max-width: 680px) {
+    .demo-page-body .demo-wrap {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+    }
+    .demo-page-body .demo-stage { min-height: 0; }
+    .demo-page-body .demo-panel { max-height: 42vh; }
   }
-  /* 手機尺寸：縮一點 padding */
-  @media (max-width: 640px) {
-    .demo-page-body { padding: 8px; }
-    .demo-bar { padding: 8px 12px; }
-    .demo-bar .logo { font-size: 15px; }
+  /* iPad 直向專屬調整：panel 略窄 */
+  @media (min-width: 681px) and (max-width: 900px) {
+    .demo-page-body .demo-wrap { grid-template-columns: 1.8fr 1fr; }
   }
 </style>
 </head>
