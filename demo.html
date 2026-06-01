@@ -317,9 +317,39 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js').catch(() => { /* SW 註冊失敗時靜默失敗，不影響網頁 */ });
+      navigator.serviceWorker.register('sw.js').then((reg) => {
+        // 主動檢查新版本，並在新版安裝完成後立即重整一次
+        reg.update();
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (!nw) return;
+          nw.addEventListener('statechange', () => {
+            if (nw.state === 'activated' && navigator.serviceWorker.controller) {
+              // 新版 SW 啟用後刷新頁面，避免使用者卡在舊版
+              window.location.reload();
+            }
+          });
+        });
+      }).catch(() => { /* SW 註冊失敗時靜默失敗，不影響網頁 */ });
     });
   }
+
+  // ===== iOS 防滾動鎖：CSS overflow:hidden 在 iOS Safari/PWA 不夠，
+  // 用 touchmove preventDefault 阻擋整頁被拖動，只允許 panel 內部捲動 + canvas 操作。
+  document.addEventListener('touchmove', (e) => {
+    const el = e.target;
+    // panel 內部允許上下滑（內容可能多於高度）
+    if (el.closest && el.closest('.demo-panel')) return;
+    // 購物車清單允許上下滑
+    if (el.closest && el.closest('.cart-list')) return;
+    // 商品卡 / 其他可能會 overflow 的容器允許滑
+    if (el.closest && el.closest('.product-card')) return;
+    // canvas 上的觸控由 OrbitControls 處理，preventDefault 沒影響
+    e.preventDefault();
+  }, { passive: false });
+
+  // 雙指捏合縮放也擋掉
+  document.addEventListener('gesturestart', (e) => e.preventDefault());
 </script>
 </body>
 </html>
